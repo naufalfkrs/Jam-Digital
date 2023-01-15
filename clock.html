@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jam Digital</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="clock">
+        <div class="inside">
+            <div class="content">
+                <!-- days -->
+                <p class="days">
+                    <span id="sun">SUN</span>
+                    <span id="mon">MON</span>
+                    <span id="tue">TUE</span>
+                    <span id="wed">WED</span>
+                    <span id="thu">THU</span>
+                    <span id="fri">FRI</span>
+                    <span id="sat">SAT</span>
+                </p>
+                <br>
+                <!-- time -->
+                <p class="text">
+                    <span id="hours"></span> :
+                    <span id="min"></span> :
+                    <span id="sec"></span> :
+                    <span id="time"></span>
+                </p>
+                <!-- date -->
+                <p id="date">
+                    <span id="cal">
+                        <img src="gambar/kalender.png" alt="" style="width: 3%">
+                    </span>
+                    <span id="day"></span>
+                    <span id="month"></span>
+                    <span id="year"></span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var daysofweek = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
+        var month = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
+
+        function clock(){
+            var today = new Date();
+            var h = today.getHours();
+            var m = today.getMinutes();
+            var s = today.getSeconds();
+            var day = h<11 ? 'AM' : 'PM';
+            var daytoday = today.getDay();
+            var date = today.getDate();
+            var mon = today.getMonth();
+            var year = today.getFullYear();
+        
+            h = h < 10 ? '0' + h : h;
+            m = m < 10 ? '0' + m : m;
+            s = s < 10 ? '0' + s : s;
+
+            document.getElementById('hours').innerHTML = h;
+            document.getElementById('min').innerHTML = m;
+            document.getElementById('sec').innerHTML = s;
+            document.getElementById('time').innerHTML = day;
+            document.getElementById(''+daysofweek[daytoday]+'').style.color = '#fff';
+            document.getElementById('day').innerHTML = date
+            document.getElementById('month').innerHTML = month[mon];
+            document.getElementById('year').innerHTML = year;
+        }
+        var inter = setInterval(clock,400);
+
+    </script>
+</body>
+</html>
